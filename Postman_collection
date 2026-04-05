@@ -1,0 +1,992 @@
+{
+  "info": {
+    "_postman_id": "83fc3f7b-3dec-40d0-a7de-ac06b55ae470",
+    "name": "Zorvyn Finance API",
+    "description": "Postman collection for the Zorvyn finance backend. Use {{zorvyn}} as the base URL and {{auth}} as the Bearer token.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "8658824"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pushpendra singh\",\n  \"username\": \"Dev11011\",\n  \"password\": \"dev@9900\",\n  \"role_id\" : 1\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/users/create",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"Admin\",\n  \"password\": \"Admin\"\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/auth/login",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Forget password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \n  \"username\": \"newuser\",\n  \"password\": \"newsecret\" // change and update\n\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/auth/forgetpassword",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "forgetpassword"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"New User\",\n  \"username\": \"newuser\",\n  \"password\": \"newPassword123\",\n  \"role_id\": 1,\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/users/create",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get User for Token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/users/getbyauth",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "getbyauth"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/users/getall",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "getall"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User By ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/users/getbyid/4",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "getbyid",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"pankaj Singh\",\n  \"username\": \"updateduser\",\n  \"password\" : \"dev@9900\",\n  \"role_id\": 1,\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/users/update",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Set User Permissions",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"permissions\": [\"View\", \"Create\"]\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/users/permissions/1",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "permissions",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/users/delete/4",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "delete",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "Create Role",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"TEST\",\n  \"permissions\": [\"View\", \"Create\"],\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/roles/create",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "roles",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Roles",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/roles/getall",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "roles",
+                "getall"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Role By ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/roles/getbyid/1",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "roles",
+                "getbyid",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Role",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"TestUpdate\",\n  \"permissions\": [\"View\", \"Create\", \"Update\"],\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/roles/update/4",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "roles",
+                "update",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Role",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/roles/delete/4",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "roles",
+                "delete",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Financial Categories",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/financial_records_category/create",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "financial_records_category",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/financial_records_category/getall",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "financial_records_category",
+                "getall"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Office Supplies\",\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/financial_records_category/update/1",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "financial_records_category",
+                "update",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/financial_records_category/delete/9",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "financial_records_category",
+                "delete",
+                "9"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Finance Records",
+      "item": [
+        {
+          "name": "Create Finance Record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1200.5,\n  \"type\": \"income\",\n  \"financial_records_category_id\": 1,\n  \"date\": \"2026-04-01\",\n  \"notes\": \"Salary payment\",\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/finance/create",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "finance",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Finance Records",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/finance/getall?type=income&from=2026-01-01&to=2026-12-31",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "finance",
+                "getall"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "income"
+                },
+                {
+                  "key": "from",
+                  "value": "2026-01-01"
+                },
+                {
+                  "key": "to",
+                  "value": "2026-12-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter Finance Records",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/finance/filterFinanceRecords?type=expense&category=Rent&from=2026-01-01&to=2026-12-31",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "finance",
+                "filterFinanceRecords"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "expense"
+                },
+                {
+                  "key": "category",
+                  "value": "Rent"
+                },
+                {
+                  "key": "from",
+                  "value": "2026-01-01"
+                },
+                {
+                  "key": "to",
+                  "value": "2026-12-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Finance Record By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/finance/getbyid/1",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "finance",
+                "getbyid",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Finance Record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1300.75,\n  \"type\": \"income\",\n  \"financial_records_category_id\": 1,\n  \"date\": \"2026-04-05\",\n  \"notes\": \"Updated salary record\",\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "{{zorvyn}}/api/finance/update/1",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "finance",
+                "update",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Finance Record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/finance/delete/1",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "finance",
+                "delete",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Summary",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth}}"
+              }
+            ],
+            "url": {
+              "raw": "{{zorvyn}}/api/dashboard/summary",
+              "host": [
+                "{{zorvyn}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "zorvyn",
+      "value": "http://localhost:2000"
+    },
+    {
+      "key": "auth",
+      "value": ""
+    }
+  ]
+}
